@@ -1,0 +1,417 @@
+{
+  "settings": {
+    "languages": [
+      "en"
+    ],
+    "tag": "nlp",
+    "threshold": 0.5,
+    "autoLoad": true,
+    "autoSave": true,
+    "modelFileName": "model.nlp",
+    "executeActionsBeforeAnswers": false,
+    "calculateSentiment": true
+  },
+  "nluManager": {
+    "settings": {
+      "tag": "nlu-manager"
+    },
+    "locales": [
+      "en"
+    ],
+    "languageNames": {},
+    "domainManagers": {
+      "en": {
+        "settings": {
+          "locale": "en",
+          "trainByDomain": false,
+          "tag": "domain-manager-en",
+          "nluByDomain": {
+            "default": {
+              "className": "NeuralNlu",
+              "settings": {}
+            }
+          },
+          "useStemDict": true
+        },
+        "stemDict": {
+          "hi": {
+            "intent": "greeting.hello",
+            "domain": "default"
+          },
+          "hello": {
+            "intent": "greeting.hello",
+            "domain": "default"
+          },
+          "do,offer,what,you": {
+            "intent": "services.offer",
+            "domain": "default"
+          },
+          "bye": {
+            "intent": "goodbye.exit",
+            "domain": "default"
+          },
+          "a,book,can,meet,you": {
+            "intent": "booking.meeting",
+            "domain": "default"
+          },
+          "a,book,for,me,tabl": {
+            "intent": "booking.table",
+            "domain": "default"
+          }
+        },
+        "intentDict": {
+          "greeting.hello": "default",
+          "services.offer": "default",
+          "goodbye.exit": "default",
+          "booking.meeting": "default",
+          "booking.table": "default"
+        },
+        "sentences": [
+          {
+            "domain": "default",
+            "utterance": "hi",
+            "intent": "greeting.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "hello",
+            "intent": "greeting.hello"
+          },
+          {
+            "domain": "default",
+            "utterance": "what do you offer",
+            "intent": "services.offer"
+          },
+          {
+            "domain": "default",
+            "utterance": "bye",
+            "intent": "goodbye.exit"
+          },
+          {
+            "domain": "default",
+            "utterance": "can you book a meeting",
+            "intent": "booking.meeting"
+          },
+          {
+            "domain": "default",
+            "utterance": "book a table for me",
+            "intent": "booking.table"
+          }
+        ],
+        "domains": {
+          "master_domain": {
+            "settings": {
+              "locale": "en",
+              "tag": "nlu-en",
+              "keepStopwords": true,
+              "nonefeatureValue": 1,
+              "nonedeltaMultiplier": 1.2,
+              "spellCheck": false,
+              "spellCheckDistance": 1,
+              "filterZeros": true,
+              "log": true
+            },
+            "features": {
+              "hi": 1,
+              "hello": 1,
+              "what": 1,
+              "do": 1,
+              "you": 1,
+              "offer": 1,
+              "bye": 1,
+              "can": 1,
+              "book": 1,
+              "a": 1,
+              "meet": 1,
+              "tabl": 1,
+              "for": 1,
+              "me": 1
+            },
+            "intents": {
+              "greeting.hello": 1,
+              "services.offer": 1,
+              "goodbye.exit": 1,
+              "booking.meeting": 1,
+              "booking.table": 1
+            },
+            "intentFeatures": {
+              "greeting.hello": {
+                "hi": 1,
+                "hello": 1
+              },
+              "services.offer": {
+                "what": 1,
+                "do": 1,
+                "you": 1,
+                "offer": 1
+              },
+              "goodbye.exit": {
+                "bye": 1
+              },
+              "booking.meeting": {
+                "can": 1,
+                "you": 1,
+                "book": 1,
+                "a": 1,
+                "meet": 1
+              },
+              "booking.table": {
+                "book": 1,
+                "a": 1,
+                "tabl": 1,
+                "for": 1,
+                "me": 1
+              }
+            },
+            "featuresToIntent": {
+              "hi": [
+                "greeting.hello"
+              ],
+              "hello": [
+                "greeting.hello"
+              ],
+              "what": [
+                "services.offer"
+              ],
+              "do": [
+                "services.offer"
+              ],
+              "you": [
+                "services.offer",
+                "booking.meeting"
+              ],
+              "offer": [
+                "services.offer"
+              ],
+              "bye": [
+                "goodbye.exit"
+              ],
+              "can": [
+                "booking.meeting"
+              ],
+              "book": [
+                "booking.meeting",
+                "booking.table"
+              ],
+              "a": [
+                "booking.meeting",
+                "booking.table"
+              ],
+              "meet": [
+                "booking.meeting"
+              ],
+              "tabl": [
+                "booking.table"
+              ],
+              "for": [
+                "booking.table"
+              ],
+              "me": [
+                "booking.table"
+              ]
+            },
+            "neuralNetwork": {
+              "settings": {
+                "locale": "en",
+                "tag": "nlu-en",
+                "keepStopwords": true,
+                "nonefeatureValue": 1,
+                "nonedeltaMultiplier": 1.2,
+                "spellCheck": false,
+                "spellCheckDistance": 1,
+                "filterZeros": true,
+                "log": true
+              },
+              "features": [
+                "hi",
+                "hello",
+                "what",
+                "do",
+                "you",
+                "offer",
+                "bye",
+                "can",
+                "book",
+                "a",
+                "meet",
+                "tabl",
+                "for",
+                "me"
+              ],
+              "intents": [
+                "greeting.hello",
+                "services.offer",
+                "goodbye.exit",
+                "booking.meeting",
+                "booking.table"
+              ],
+              "perceptrons": [
+                [
+                  8.935359954833984,
+                  8.938158988952637,
+                  -1.1899698972702026,
+                  -1.1899698972702026,
+                  -1.6503230333328247,
+                  -1.1899698972702026,
+                  -4.957454681396484,
+                  -0.4602338671684265,
+                  -1.3171825408935547,
+                  -1.3171825408935547,
+                  -0.4602338671684265,
+                  -0.8567889928817749,
+                  -0.8567889928817749,
+                  -0.8567889928817749,
+                  5.205526659053773
+                ],
+                [
+                  -0.5372605919837952,
+                  -0.5355034470558167,
+                  3.6626174449920654,
+                  3.6626174449920654,
+                  2.760370969772339,
+                  3.6626174449920654,
+                  -0.5466569662094116,
+                  -0.8591261506080627,
+                  -0.9255425333976746,
+                  -0.9255425333976746,
+                  -0.8591261506080627,
+                  -0.042628318071365356,
+                  -0.042628318071365356,
+                  -0.042628318071365356,
+                  0.5373304364076786
+                ],
+                [
+                  -2.4668805599212646,
+                  -2.4472994804382324,
+                  -0.5820872783660889,
+                  -0.5820872783660889,
+                  -0.8484461307525635,
+                  -0.5820872783660889,
+                  11.39864730834961,
+                  -0.2591036558151245,
+                  -0.6827011108398438,
+                  -0.6827011108398438,
+                  -0.2591036558151245,
+                  -0.416342169046402,
+                  -0.416342169046402,
+                  -0.416342169046402,
+                  2.609290541228852
+                ],
+                [
+                  -0.23640531301498413,
+                  -0.23253491520881653,
+                  -0.9633026123046875,
+                  -0.9633026123046875,
+                  2.6379239559173584,
+                  -0.9633026123046875,
+                  -0.2214680016040802,
+                  3.6067090034484863,
+                  2.1060612201690674,
+                  2.1060612201690674,
+                  3.6067090034484863,
+                  -1.4921221733093262,
+                  -1.4921221733093262,
+                  -1.4921221733093262,
+                  0.2222050666872093
+                ],
+                [
+                  -0.36277803778648376,
+                  -0.3596802055835724,
+                  -0.09271050244569778,
+                  -0.09271050244569778,
+                  -1.518399715423584,
+                  -0.09271050244569778,
+                  -0.35828107595443726,
+                  -1.395318865776062,
+                  1.9219664335250854,
+                  1.9219664335250854,
+                  -1.395318865776062,
+                  3.360914707183838,
+                  3.360914707183838,
+                  3.360914707183838,
+                  0.3589974803943852
+                ]
+              ]
+            }
+          }
+        }
+      }
+    },
+    "intentDomains": {},
+    "extraSentences": [
+      [
+        "en",
+        "hi"
+      ],
+      [
+        "en",
+        "hello"
+      ],
+      [
+        "en",
+        "what do you offer"
+      ],
+      [
+        "en",
+        "bye"
+      ],
+      [
+        "en",
+        "can you book a meeting"
+      ],
+      [
+        "en",
+        "book a table for me"
+      ]
+    ]
+  },
+  "ner": {
+    "settings": {
+      "tag": "ner",
+      "entityPreffix": "%",
+      "entitySuffix": "%"
+    },
+    "rules": {}
+  },
+  "nlgManager": {
+    "settings": {
+      "tag": "nlg-manager"
+    },
+    "responses": {
+      "en": {
+        "greeting.hello": [
+          {
+            "answer": "Hello! How can I assist you today?"
+          }
+        ],
+        "services.offer": [
+          {
+            "answer": "I can assist with booking services and general queries."
+          }
+        ],
+        "goodbye.exit": [
+          {
+            "answer": "Goodbye! Take care!"
+          }
+        ],
+        "booking.meeting": [
+          {
+            "answer": "Sure, I can help you book a meeting."
+          }
+        ],
+        "booking.table": [
+          {
+            "answer": "Absolutely! Let me know the date and time."
+          }
+        ]
+      }
+    }
+  },
+  "actionManager": {
+    "settings": {
+      "tag": "action-manager"
+    },
+    "actions": {}
+  },
+  "slotManager": {}
+}
