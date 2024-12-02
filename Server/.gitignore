@@ -1,40 +1,34 @@
-# Node.js
-node_modules/
+# Node modules
+/node_modules/
 
 # Build output
-build/
-dist/
+/build/
+/dist/
 
-# Log files
+# React Native
+/.expo/
+/.expo/
+
+# Logs
+*.log
+
+# Debug files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Operating System files
+# OS-specific files
 .DS_Store
 Thumbs.db
 
-# IDE/editor folders
+# Environment variables
+.env
+
+# IDEs and editor folders
 .vscode/
 .idea/
-*.sublime-project
-*.sublime-workspace
 
-# React Native
-.expo/
-.android/
-.ios/
-
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Coverage
-coverage/
-
-# Miscellaneous
-*.pem
-*.log
+# package-lock.json or yarn.lock (if you're using yarn instead of npm)
+# You can uncomment one if needed, but it's typically a good idea to keep lock files in the repo
+# package-lock.json
+# yarn.lock

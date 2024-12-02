@@ -3,9 +3,6 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import gsap from 'gsap';
 
-import logo from './assets/lucifer.png';
-
-
 function App() {
     const [message, setMessage] = useState('');
     const [chat, setChat] = useState([]);
@@ -58,19 +55,15 @@ function App() {
 
     return (
         <div className="container-fluid mt-5">
-
-            <h1 className="text-center mb-4" style={{ fontFamily: 'monospace' }} ref={titleRef}>
-                QuestBot 
-            </h1>
-            <img src={logo} alt="Logo" />
-
-            <div className="card shadow-lg border-0 rounded">
+            <h1 className="text-center mb-4" style={{fontFamily: 'monospace'}} ref={titleRef}>QuestBot</h1>
+            <div className="card shadow-lg border-0 rounded" style={{ maxWidth: '600px', margin: 'auto' }}> {/* Added width constraint */}
                 <div className="card-body p-3 chat-container" style={{ maxHeight: '400px', overflowY: 'scroll' }}>
                     <div>
                         {chat.map((msg, index) => (
                             <div
                                 key={index}
-                                className={`message-bubble mb-2 p-2 rounded-3 ${msg.user === 'You' ? 'bg-primary text-white text-end ms-auto' : 'bg-secondary text-white'}`}
+                                className={`message-bubble mb-2 p-2 rounded-3 ${msg.user === 'You' ? 'bg-primary text-white text-end ms-auto' : 'bg-secondary text-white text-start'}`}
+                                style={{ maxWidth: '80%' }} // Limit message width
                             >
                                 <strong>{msg.user}:</strong> {msg.text}
                             </div>
