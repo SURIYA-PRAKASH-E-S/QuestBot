@@ -52,10 +52,10 @@ function App() {
         setChat((prevChat) => [...prevChat, userMessage]);
 
         try {
-            const response = await axios.post('http://localhost:5000/api/chat', { query: message });
+            const response = await axios.post('http://localhost:5000/chat', { query: message });
             const botMessage = {
                 user: 'Bot',
-                text: `${response.data.response} (Intent: ${response.data.intent})`,
+                text: `${response.data.botReply}`,
             };
             setChat((prevChat) => [...prevChat, botMessage]);
         } catch (error) {

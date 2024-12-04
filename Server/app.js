@@ -4,9 +4,39 @@ const { NlpManager } = require('node-nlp');
 const Papa = require('papaparse');
 const fs = require('fs');
 
+/* Gen Ai */
+
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const API_KEY = `AIzaSyBeCn02TRCtxkEBkMJVek7YiMuRqeJQL04`
+
+const generationConfig = {
+  stopSequences: ["red"],
+  maxOutputTokens: 5,
+  temperature: 0.9,
+  topP: 0.1,
+  topk: 16,
+};
+
+const genAI = new GoogleGenerativeAI(API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"}, generationConfig);
+const prompt = `Now, you are my ChatBot named Questbot that help people to book theri turf you need answer any question that user asked realted to booking, queries, payment, and turf open and close timing`;
+
+(async () => {
+
+    const result = await model.generateContent(prompt);
+    const botRes = result.response.text();
+    console.log(botRes)
+    
+})();
+
+/* End */
+
 const app = express();
+
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Initialize NLP Manager
 const manager = new NlpManager({ languages: ['en'] });
@@ -70,6 +100,19 @@ app.post('/api/chat', async (req, res) => {
     res.status(500).json({ error: 'Internal server error.' });
   }
 });
+
+app.post('/chat', (req,res) => {
+      const {query} = req.body;
+
+      (async () => {
+          const result = await model.generateContent(query);
+          
+          const botRes = result.response.text();
+
+          res.json({ botReply: botRes || "I'm sorry, I didn't understand that." });
+          
+      })();
+})
 
 // Start the server
 const PORT = 5000;
